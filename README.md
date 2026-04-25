@@ -19,4 +19,4 @@ We used two pre-trained models from the Qwen series:
 
 - The second example is recognizing and translating English handwritten text.
 ![Picture 2.3. English-handwritten-to-Russian-Example](images/example2.jpg)
-![Picture 2.4. English-handwritten-to-Russian-Output](images/output1.jpg)
+![Picture 2.4. English-handwritten-to-Russian-Output](images/output2.jpg)
