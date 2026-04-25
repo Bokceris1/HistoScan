@@ -4,10 +4,19 @@ We present HistoScan, a model for interpreting text from photographs and automat
 
 HistoScan simplifies the digitization of historical documents and handwritten notes, providing a seamless pipeline from raw image to localized text.
 
-# Architecture
+## Architecture
 
 We used two pre-trained models from the Qwen series:
 - The first is a model for recognizing handwritten and printed text from photographs (Qwen2-VL-2B-OCR)
 - The second is a model for text translation (Qwen/Qwen3.5-0.8B)
 
 ![Picture 1. Architecture](images/schema.jpg)
+
+## Examples
+- The first example is recognizing handwritten Russian text.
+![Picture 2.1. Russian-handwritten-to-Russian-Example](images/example1.jpg)
+![Picture 2.2. Russian-handwritten-to-Russian-Output](images/output1.jpg)
+
+- The second example is recognizing and translating English handwritten text.
+![Picture 2.3. English-handwritten-to-Russian-Example](images/example2.jpg)
+![Picture 2.4. English-handwritten-to-Russian-Output](images/output1.jpg)
