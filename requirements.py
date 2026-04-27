@@ -1,0 +1,13 @@
+torch>=2.1.0
+transformers>=4.40.0
+huggingface_hub>=0.23.0
+Pillow>=10.0.0
+PyMuPDF>=1.24.0
+aiogram>=3.4.1
+accelerate>=0.30.0
+safetensors>=0.4.3
+sentencepiece>=0.2.0
+protobuf>=4.25.3
+numpy>=1.26.0
+tqdm>=4.66.0
+regex>=2024.5.15
