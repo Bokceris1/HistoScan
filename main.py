@@ -12,7 +12,7 @@ load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
-    raise ValueError("BOT_TOKEN не задан. Создайте файл .env с токеном бота.")
+    print("BOT_TOKEN не задан. Создайте файл .env с токеном бота.")
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
