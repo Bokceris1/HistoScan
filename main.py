@@ -4,10 +4,15 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from aiogram.filters import CommandStart
 import asyncio
+from dotenv import load_dotenv
 
 from qwenocr import process_document
 
+load_dotenv()
+
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN не задан. Создайте файл .env с токеном бота.")
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
