@@ -7,11 +7,9 @@ from huggingface_hub import login
 from transformers import AutoProcessor, AutoModelForImageTextToText, AutoTokenizer, AutoModelForCausalLM
 
 # Токен Hugging Face
-# HF_TOKEN = "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"
-
 HF_TOKEN = os.getenv("HF_TOKEN")
 if not HF_TOKEN:
-    raise ValueError("HF_TOKEN не задан. Создайте файл .env с вашим токеном Hugging Face.")
+    print("HF_TOKEN не задан. Создайте файл .env с вашим токеном Hugging Face.")
 
 # Обновленный промпт для OCR: указываем мультиязычность и рукописный текст
 OCR_PROMPT = """
