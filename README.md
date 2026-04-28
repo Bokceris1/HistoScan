@@ -78,10 +78,13 @@ cd HistoScan
 pip install -r requirements.txt
 ```
 
-**3. Set up environment variables**
-```bash
-cp .env.example .env
-```
+[//]: # (**3. Set up environment variables**)
+
+[//]: # (```bash)
+
+[//]: # (cp .env.example .env)
+
+[//]: # (```)
 
 Open `.env` and fill in your tokens:
 ```
@@ -89,7 +92,7 @@ BOT_TOKEN=your_telegram_bot_token
 HF_TOKEN=your_huggingface_token
 ```
 
-**4. Run the bot**
+**3. Run the bot**
 ```bash
 python main.py
 ```
