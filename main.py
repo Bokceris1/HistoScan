@@ -48,7 +48,6 @@ async def file_handler(message: Message):
         with open(output_path, "rb") as f:
             await message.answer_document(f)
 
-
 async def main():
     await dp.start_polling(bot)
 
