@@ -25,7 +25,7 @@ The pipeline uses two pretrained models from the Qwen series:
 
 | Input image | Output |
 |---|---|
-| ![](images/example2.jpg) | ![](images/output2.jpg) |
+| ![](images/example2.png) | ![](images/output2.jpg) |
 
 ## Project Structure
 
@@ -86,7 +86,7 @@ pip install -r requirements.txt
 
 [//]: # (```)
 
-Open `.env` and fill in your tokens:
+Create `.env` and fill in your tokens:
 ```
 BOT_TOKEN=your_telegram_bot_token
 HF_TOKEN=your_huggingface_token
@@ -97,7 +97,7 @@ HF_TOKEN=your_huggingface_token
 python main.py
 ```
 
-On the first run, the models (~3 GB) will be downloaded automatically from Hugging Face. This may take 5–15 minutes depending on your internet speed.
+On the first run, the models (~7 GB) will be downloaded automatically from Hugging Face. This may take 5–15 minutes depending on your internet speed.
 
 ## Usage
 
@@ -116,7 +116,3 @@ On the first run, the models (~3 GB) will be downloaded automatically from Huggi
 ```
 
 If the input text is already in Russian, no translation is applied — the RUSSIAN TRANSLATION block will contain the original text unchanged.
-
-## License
-
-MIT
