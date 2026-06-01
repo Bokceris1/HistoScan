@@ -1,5 +1,4 @@
 import os
-import re
 import torch
 import fitz  # PyMuPDF
 from PIL import Image
@@ -58,106 +57,48 @@ def initialize_models(token: str):
     return (ocr_model, ocr_processor), (translator_model, translator_tokenizer)
 
 
-def translate_and_preserve_shape(sentence: str, model, tokenizer) -> str:
-    """Переводит единое предложение, сохраняя внутри него оригинальные переносы строк пропорционально."""
-    nl_indices = [i for i, char in enumerate(sentence) if char == '\n']
-
-    clean_sentence = sentence.replace('\n', ' ')
-    clean_sentence = re.sub(r'\s+', ' ', clean_sentence).strip()
-
-    if not clean_sentence:
-        return sentence
-
-    # Обновленный промпт для перевода: добавлено условие проверки на русский язык
-    messages = [
-        {
-            "role": "system",
-            "content": "You are a highly accurate professional translator. Translate the provided text from any language into Russian. If the text is ALREADY in Russian, output it exactly as it is without any changes or translation. Output ONLY the resulting Russian text. Do not add any explanations, notes, or quotes."
-        },
-        {
-            "role": "user",
-            "content": clean_sentence
-        }
-    ]
-
-    prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-
-    outputs = model.generate(
-        **inputs,
-        max_new_tokens=512,
-        do_sample=False,
-        temperature=None,
-        top_p=None
-    )
-
-    input_length = inputs['input_ids'].shape[1]
-    translated = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True).strip()
-
-    if not nl_indices or not translated:
-        return translated
-
-    orig_len = len(sentence)
-    proportions = [idx / orig_len for idx in nl_indices]
-
-    trans_len = len(translated)
-    result_chars = list(translated)
-
-    for prop in proportions:
-        target_idx = int(trans_len * prop)
-        if target_idx >= trans_len:
-            target_idx = max(0, trans_len - 1)
-
-        left_space = target_idx
-        while left_space >= 0 and result_chars[left_space] != ' ':
-            left_space -= 1
-
-        right_space = target_idx
-        while right_space < trans_len and result_chars[right_space] != ' ':
-            right_space += 1
-
-        dist_left = target_idx - left_space if left_space >= 0 and result_chars[left_space] == ' ' else float('inf')
-        dist_right = right_space - target_idx if right_space < trans_len and result_chars[
-            right_space] == ' ' else float('inf')
-
-        if dist_left == float('inf') and dist_right == float('inf'):
-            continue
-
-        best_space = left_space if dist_left <= dist_right else right_space
-        result_chars[best_space] = '\n'
-
-    return "".join(result_chars)
-
-
 def translate_text(text: str, translator) -> str:
+    """
+    Переводит ВЕСЬ текст (OCR output целиком) за один вызов переводчика.
+    """
     if not text.strip():
         return ""
 
     model, tokenizer = translator
 
-    paragraphs = re.split(r'(\n\s*\n)', text)
-    translated_paragraphs = []
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a highly accurate professional translator. "
+                "Translate the provided text from any language into Russian. "
+                "If the text is ALREADY in Russian, output it exactly as it is "
+                "without any changes or translation. "
+                "Preserve all line breaks from the original. "
+                "Output ONLY the resulting Russian text. "
+                "Do not add any explanations, notes, or quotes."
+            ),
+        },
+        {
+            "role": "user",
+            "content": text,
+        },
+    ]
+    
+    prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
-    for p in paragraphs:
-        if re.match(r'^\n\s*\n$', p):
-            translated_paragraphs.append(p)
-            continue
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=2048,
+        do_sample=False,
+        temperature=None,
+        top_p=None,
+    )
 
-        parts = re.split(r'(?<=[.!?])(\s+)', p)
+    input_length = inputs["input_ids"].shape[1]
+    return tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True).strip()
 
-        translated_parts = []
-        for part in parts:
-            if re.match(r'^\s+$', part):
-                translated_parts.append(part)
-            elif part.strip():
-                translated_part = translate_and_preserve_shape(part, model, tokenizer)
-                translated_parts.append(translated_part)
-            else:
-                translated_parts.append(part)
-
-        translated_paragraphs.append("".join(translated_parts))
-
-    return "".join(translated_paragraphs)
 
 
 def run_qwen_ocr(image: Image.Image, model, processor) -> str:
