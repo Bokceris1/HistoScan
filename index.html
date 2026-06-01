@@ -553,7 +553,6 @@
 <div class="slides-container" id="slidesContainer">
     <section class="slide">
         <div class="content" style="text-align: center;">
-<!--            <span class="badge">🏆 Выпускной проект / ИИ-решение</span>-->
             <h1 style="font-size: 4rem;">HistoScan</h1>
             <div class="subhead">OCR + нейроперевод для исторических документов</div>
             <div style="margin: 2rem auto; max-width: 700px;">
@@ -563,8 +562,7 @@
                 <span class="tech-item">🐍 Python 3.10+</span>
                 <span class="tech-item">🤗 Qwen2-VL-2B-OCR</span>
                 <span class="tech-item">🌐 Qwen3.5-0.8B</span>
-<!--                <span class="tech-item">🤖 Aiogram 3</span>-->
-                <span class="tech-item">📄 PDF / JPG / PNG</span>
+                <span class="tech-item">📄 PDF / JPG</span>
             </div>
             <footer style="margin-top: 2.5rem;">Работает на CPU · 7 ГБ ОЗУ</footer>
         </div>
@@ -654,7 +652,7 @@
             <h2>📊 Системные метрики</h2>
             <div class="metrics-grid">
                 <div class="metric-card"><div class="metric-number">~3-5 мин</div><div class="metric-label">Среднее время инференса</div><div class="metric-desc">CPU (Intel i5 / аналоги), без GPU</div></div>
-                <div class="metric-card"><div class="metric-number">100+</div><div class="metric-label">Языки OCR</div><div class="metric-desc">Мультиязычная модель Qwen2-VL</div></div>
+                <div class="metric-card"><div class="metric-number">30+</div><div class="metric-label">Языки OCR</div><div class="metric-desc">Мультиязычная модель Qwen2-VL</div></div>
                 <div class="metric-card"><div class="metric-number">~7 ГБ</div><div class="metric-label">Веса моделей</div><div class="metric-desc">OCR + переводчик</div></div>
                 <div class="metric-card"><div class="metric-number">4-6 ГБ</div><div class="metric-label">Пиковое потребление ОЗУ</div><div class="metric-desc">Оптимизировано для CPU</div></div>
                 <div class="metric-card"><div class="metric-number">📑 PDF</div><div class="metric-label">Многостраничные файлы</div><div class="metric-desc">Постраничная обработка + перевод</div></div>
@@ -753,8 +751,8 @@
                     <img src="images/qr-code.jpg" alt="QR код GitHub HistoScan" width="200" height="200" style="border-radius: 20px;" onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fgithub.com%2FBokceris1%2FHistoScan'">
                 </div>
                 <div>
-                    <p><strong>Сканируйте, чтобы перейти к репозиторию</strong></p>
-                    <div class="repo-link">https://github.com/Bokceris1/HistoScan</div>
+                    <p><strong>Сканируйте, чтобы перейти к тг-боту</strong></p>
+                    <div class="repo-link">https://t.me/HISTOSCANbotbot</div>
                     <p style="margin-top: 0.7rem;">📦 Исходный код, инструкция по установке, примеры</p>
                     <div class="tech-stack" style="justify-content: center; margin-top: 0.6rem;">
                         <span class="tech-item">🤖 Telegram: @HistoScanBot (демо)</span>
@@ -765,18 +763,18 @@
         </div>
     </section>
 
-    <!-- ИСТОЧНИКИ (ДОБАВЛЕНА НОВАЯ ССЫЛКА) -->
+    <!-- ИСТОЧНИКИ (ЗАМЕНЕН ПЕРВЫЙ ИСТОЧНИК) -->
     <section class="slide">
         <div class="content">
             <h2>📚 Источники технической информации</h2>
             <div class="sources-list">
                 <div class="source-item">
-                    <div class="source-title">🔍 Базовая мультимодальная модель</div>
+                    <div class="source-title">🌐 Модель перевода на русский язык</div>
                     <div class="source-link">
-                        <a href="https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct/tree/main" target="_blank">https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct/tree/main</a>
+                        <a href="https://huggingface.co/Qwen/Qwen3.5-0.8B" target="_blank">https://huggingface.co/Qwen/Qwen3.5-0.8B</a>
                     </div>
                     <div class="source-desc">
-                        Qwen2-VL-2B-Instruct — мультимодальная модель семейства Qwen2-VL от компании Alibaba Cloud. Обеспечивает понимание изображений и текста, используется как основа для дообучения под задачу OCR.
+                        Qwen3.5-0.8B — лёгкая текстовая модель для перевода на русский язык. Используется в проекте для перевода распознанного текста. Обладает малым размером (0.8B параметров), что позволяет работать на CPU.
                     </div>
                 </div>
                 <div class="source-item">
@@ -785,7 +783,7 @@
                         <a href="https://huggingface.co/JackChew/Qwen2-VL-2B-OCR" target="_blank">https://huggingface.co/JackChew/Qwen2-VL-2B-OCR</a>
                     </div>
                     <div class="source-desc">
-                        Qwen2-VL-2B-OCR — тонко настроенная версия предыдущей модели, оптимизированная для задач оптического распознавания символов. Позволяет извлекать полный текст из изображений документов, таблиц и платёжных ведомостей.
+                        Qwen2-VL-2B-OCR — тонко настроенная версия мультимодальной модели, оптимизированная для задач оптического распознавания символов. Позволяет извлекать полный текст из изображений документов, таблиц и платёжных ведомостей.
                     </div>
                 </div>
                 <div class="source-item">
