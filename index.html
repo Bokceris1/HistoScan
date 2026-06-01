@@ -338,6 +338,50 @@
             flex: 1;
             min-width: 200px;
         }
+
+        /* Стили для слайда с источниками */
+        .sources-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        .source-item {
+            background: #F2F9FC;
+            border-radius: 24px;
+            padding: 1.2rem 1.8rem;
+            transition: 0.2s;
+            border-left: 6px solid #2A9D8F;
+        }
+        .source-item:hover {
+            transform: translateX(8px);
+            background: #e8f3f8;
+        }
+        .source-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1E5A6E;
+            margin-bottom: 0.3rem;
+        }
+        .source-link {
+            font-family: monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+        .source-link a {
+            color: #2A9D8F;
+            text-decoration: none;
+        }
+        .source-link a:hover {
+            text-decoration: underline;
+            color: #1E5A6E;
+        }
+        .source-desc {
+            font-size: 0.85rem;
+            color: #547a8a;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -474,6 +518,37 @@
                 </div>
             </div>
             <footer style="margin-top: 1rem;">Отправьте боту фото или PDF → получите result.txt с оригиналом и переводом на русский.</footer>
+        </div>
+    </section>
+
+    <!-- Новый слайд: Источники информации -->
+    <section class="slide">
+        <div class="content">
+            <h2>📚 Источники технической информации</h2>
+            <div class="sources-list">
+                <div class="source-item">
+                    <div class="source-title">🔍 Базовая мультимодальная модель</div>
+                    <div class="source-link">
+                        <a href="https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct/tree/main" target="_blank">https://huggingface.co/Qwen/Qwen2-VL-2B-Instruct/tree/main</a>
+                    </div>
+                    <div class="source-desc">
+                        Qwen2-VL-2B-Instruct — мультимодальная модель семейства Qwen2-VL от компании Alibaba Cloud. Обеспечивает понимание изображений и текста, используется как основа для дообучения под задачу OCR.
+                    </div>
+                </div>
+                <div class="source-item">
+                    <div class="source-title">📄 Дообученная OCR-модель</div>
+                    <div class="source-link">
+                        <a href="https://huggingface.co/JackChew/Qwen2-VL-2B-OCR" target="_blank">https://huggingface.co/JackChew/Qwen2-VL-2B-OCR</a>
+                    </div>
+                    <div class="source-desc">
+                        Qwen2-VL-2B-OCR — тонко настроенная версия предыдущей модели, оптимизированная для задач оптического распознавания символов. Позволяет извлекать полный текст из изображений документов, таблиц и платёжных ведомостей.
+                    </div>
+                </div>
+            </div>
+            <div style="background:#EAF3F0; border-radius: 28px; padding: 1rem; margin-top: 1rem; text-align:center;">
+                <p>💡 Эти модели были выбраны за баланс между качеством распознавания и низкими требованиями к оборудованию.<br>
+                Обе модели распространяются свободно и могут использоваться в локальных проектах без дополнительных лицензионных отчислений.</p>
+            </div>
         </div>
     </section>
 
