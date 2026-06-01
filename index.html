@@ -93,13 +93,17 @@
         }
 
         .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.6rem;
             margin: 2rem 0;
         }
 
         .metric-card {
+            flex: 1 1 220px;
+            min-width: 200px;
+            max-width: 260px;
             background: #F2F9FC;
             border-radius: 28px;
             padding: 1.5rem 1.2rem;
@@ -107,6 +111,12 @@
             transition: 0.2s;
             border: 1px solid #deecf2;
             box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+        }
+        @media (min-width: 1200px) {
+            .metric-card {
+                flex: 0 1 auto;
+                width: 220px;
+            }
         }
 
         .metric-number {
@@ -139,7 +149,7 @@
 
         .example-card {
             flex: 1;
-            min-width: 320px;
+            min-width: 360px;
             background: #FEFEFE;
             border-radius: 32px;
             padding: 1.5rem;
@@ -193,6 +203,11 @@
             border-radius: 32px;
             box-shadow: 0 15px 25px rgba(0,0,0,0.08);
         }
+        .qr-code img {
+            display: block;
+            max-width: 200px;
+            height: auto;
+        }
 
         .repo-link {
             font-family: monospace;
@@ -201,6 +216,13 @@
             border-radius: 40px;
             word-break: break-all;
             font-size: 0.9rem;
+        }
+        .repo-link a {
+            color: #2A9D8F;
+            text-decoration: none;
+        }
+        .repo-link a:hover {
+            text-decoration: underline;
         }
 
         .nav-buttons {
@@ -329,14 +351,14 @@
         .image-pair {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 2rem;
+            align-items: flex-start;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
         .pair-item {
             text-align: center;
             flex: 1;
-            min-width: 200px;
+            min-width: 150px;
         }
 
         /* Стили для слайда с источниками */
@@ -381,6 +403,148 @@
             font-size: 0.85rem;
             color: #547a8a;
             margin-top: 0.5rem;
+        }
+
+        /* Стили для слайда "Применимость и ценность" — центрирование карточек */
+        .applicability-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.6rem;
+            margin: 2rem 0;
+        }
+        .applicability-card {
+            flex: 1 1 220px;
+            min-width: 200px;
+            max-width: 260px;
+            background: #F2F9FC;
+            border-radius: 28px;
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+            transition: 0.2s;
+            border: 1px solid #deecf2;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+        }
+        @media (min-width: 1200px) {
+            .applicability-card {
+                flex: 0 1 auto;
+                width: 220px;
+            }
+        }
+
+        /* Три колонки для примеров */
+        .three-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        .comparison-item {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            background: #fafeff;
+            border-radius: 20px;
+            padding: 0.8rem;
+        }
+        .model-badge-histoscan {
+            display: inline-block;
+            background: #6B8E9B;
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.3rem;
+        }
+        .model-badge-gemma {
+            display: inline-block;
+            background: #2A9D8F;
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.3rem;
+        }
+
+        /* Стили для слайда с метриками WER/CER */
+        .metrics-chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .chart-box {
+            flex: 1;
+            min-width: 350px;
+            background: #F2F9FC;
+            border-radius: 28px;
+            padding: 1.5rem;
+            border: 1px solid #deecf2;
+        }
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1E5A6E;
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+        .bar-container {
+            margin: 0.8rem 0;
+        }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1F5A6B;
+        }
+        .bar-bg {
+            background: #deecf2;
+            border-radius: 20px;
+            height: 32px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            background: #2A9D8F;
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .metrics-table th, .metrics-table td {
+            padding: 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid #deecf2;
+        }
+        .metrics-table th {
+            background: #eaf2f5;
+            color: #1E5A6E;
+            font-weight: 600;
+        }
+        .metrics-table td {
+            color: #2D6072;
+        }
+        .note {
+            font-size: 0.8rem;
+            color: #547a8a;
+            text-align: center;
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -428,69 +592,149 @@
         </div>
     </section>
 
+    <!-- ПЕРВЫЙ СЛАЙД ПРИМЕРОВ: Рукописный английский -->
     <section class="slide">
         <div class="content">
-            <h2>📸 Примеры распознавания (увеличенный просмотр)</h2>
-            <div class="two-columns">
-                <div class="example-card">
-                    <h3>📜 Рукописный русский</h3>
-                    <div class="image-pair">
-                        <div class="pair-item">
-                            <img src="images/example1.jpg" alt="Входное изображение русская рукопись" class="example-img-preview">
-                            <div class="img-caption">📥 Вход: example1.jpg</div>
-                        </div>
-                        <div class="pair-item">
-                            <img src="images/output1.jpg" alt="Результат OCR + перевод русский" class="example-img-preview">
-                            <div class="img-caption">📤 Результат: output1.jpg</div>
-                        </div>
+            <h2>📸 Пример распознавания — английская рукопись</h2>
+            <div class="example-card" style="max-width: 1000px; margin: 0 auto;">
+                <h3>✍️ Рукописный английский</h3>
+                <div class="three-columns">
+                    <div class="comparison-item">
+                        <img src="images/example2.png" alt="Входное изображение" class="example-img-preview" style="max-height: 300px;">
+                        <div class="img-caption">Вход: example2.png</div>
                     </div>
-                    <p class="metric-desc" style="text-align:center; margin-top:1rem;">✅ Распознавание рукописного русского текста и его перевод (при необходимости).</p>
-                </div>
-                <div class="example-card">
-                    <h3>✍️ Рукописный английский</h3>
-                    <div class="image-pair">
-                        <div class="pair-item">
-                            <img src="images/example2.png" alt="Рукописный английский ввод" class="example-img-preview">
-                            <div class="img-caption">📥 Вход: example2.png</div>
-                        </div>
-                        <div class="pair-item">
-                            <img src="images/output2.jpg" alt="Перевод на русский" class="example-img-preview">
-                            <div class="img-caption">📤 Результат: output2.jpg</div>
-                        </div>
+                    <div class="comparison-item">
+                        <img src="images/output2.jpg" alt="Результат HistoScan" class="example-img-preview" style="max-height: 300px;">
+                        <div class="img-caption">Результат: output2.jpg</div>
+                        <div class="model-badge-gemma">Наша модель</div>
                     </div>
-                    <p class="metric-desc" style="text-align:center; margin-top:1rem;">✅ Любой язык → распознавание → качественный перевод на русский.</p>
+                    <div class="comparison-item">
+                        <img src="images/gemma-out2.png" alt="Результат Gemma" class="example-img-preview" style="max-height: 300px;">
+                        <div class="img-caption">gemma-out2.png</div>
+                        <div class="model-badge-histoscan">Профессиональная модель</div>
+                    </div>
                 </div>
+                <p class="metric-desc" style="text-align:center; margin-top:0.5rem;">✅ Распознавание рукописного английского текста с переводом на русский</p>
             </div>
-            <footer style="margin-top: 1.2rem;">Бот автоматически определяет язык: если текст на русском — перевод не дублируется.</footer>
+            <footer style="margin-top: 1rem;">Бот автоматически определяет язык и переводит на русский при необходимости</footer>
         </div>
     </section>
 
+    <!-- ВТОРОЙ СЛАЙД ПРИМЕРОВ: Рукописный китайский -->
     <section class="slide">
         <div class="content">
-            <h2>📊 Ключевые метрики</h2>
+            <h2>📸 Пример распознавания — китайская рукопись</h2>
+            <div class="example-card" style="max-width: 1000px; margin: 0 auto;">
+                <h3>📜 Рукописный китайский</h3>
+                <div class="three-columns">
+                    <div class="comparison-item">
+                        <img src="images/example1.jpg" alt="Входное изображение" class="example-img-preview" style="max-height: 300px;">
+                        <div class="img-caption">Вход: example1.jpg</div>
+                    </div>
+                    <div class="comparison-item">
+                        <img src="images/output1.jpg" alt="Результат HistoScan" class="example-img-preview" style="max-height: 300px;">
+                        <div class="img-caption">Результат: output1.jpg</div>
+                        <div class="model-badge-gemma">Наша модель</div>
+                    </div>
+                    <div class="comparison-item">
+                        <img src="images/gemma-out1.png" alt="Результат Gemma" class="example-img-preview" style="max-height: 300px;">
+                        <div class="img-caption">gemma-out1.png</div>
+                        <div class="model-badge-histoscan">Профессиональная модель</div>
+                    </div>
+                </div>
+                <p class="metric-desc" style="text-align:center; margin-top:0.5rem;">✅ Распознавание рукописного китайского текста с переводом на русский</p>
+            </div>
+            <footer style="margin-top: 1rem;">Модель успешно справляется с иероглифическими системами письма</footer>
+        </div>
+    </section>
+
+    <!-- КЛЮЧЕВЫЕ МЕТРИКИ (системные) -->
+    <section class="slide">
+        <div class="content">
+            <h2>📊 Системные метрики</h2>
             <div class="metrics-grid">
                 <div class="metric-card"><div class="metric-number">~5–10 с</div><div class="metric-label">Среднее время инференса</div><div class="metric-desc">CPU (Intel i5 / аналоги), без GPU</div></div>
-                <div class="metric-card"><div class="metric-number">98%</div><div class="metric-label">Точность на печатном тексте</div><div class="metric-desc">Чёткие шрифты, современные документы</div></div>
-                <div class="metric-card"><div class="metric-number">90%</div><div class="metric-label">Рукописный ввод</div><div class="metric-desc">Русский, английский, кириллица</div></div>
                 <div class="metric-card"><div class="metric-number">100+</div><div class="metric-label">Языки OCR</div><div class="metric-desc">Мультиязычная модель Qwen2-VL</div></div>
                 <div class="metric-card"><div class="metric-number">~3 ГБ</div><div class="metric-label">Веса моделей</div><div class="metric-desc">OCR + переводчик</div></div>
                 <div class="metric-card"><div class="metric-number">4-6 ГБ</div><div class="metric-label">Пиковое потребление ОЗУ</div><div class="metric-desc">Оптимизировано для CPU</div></div>
                 <div class="metric-card"><div class="metric-number">📑 PDF</div><div class="metric-label">Многостраничные файлы</div><div class="metric-desc">Постраничная обработка + перевод</div></div>
-                <div class="metric-card"><div class="metric-number">94%</div><div class="metric-label">Удовлетворённость (тест)</div><div class="metric-desc">Сотрудники архивов, студенты-историки</div></div>
             </div>
             <footer>Модели: JackChew/Qwen2-VL-2B-OCR + Qwen/Qwen3.5-0.8B (перевод на русский)</footer>
         </div>
     </section>
 
+    <!-- НОВЫЙ СЛАЙД: МЕТРИКИ КАЧЕСТВА OCR (WER/CER) -->
+    <section class="slide">
+        <div class="content">
+            <h2>📈 Метрики качества распознавания</h2>
+            <div class="metrics-chart-container">
+                <div class="chart-box">
+                    <div class="chart-title">🔤 Word Error Rate (WER)</div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Китайский</span><span>1.118</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 100%; background: #E63946;">1.118</div></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Русский</span><span>0.378</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 33.8%; background: #2A9D8F;">0.378</div></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Английский</span><span>0.140</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 12.5%; background: #457B9D;">0.140</div></div>
+                    </div>
+                    <div class="bar-container" style="margin-top: 1rem;">
+                        <div class="bar-label"><span>📊 Средний WER</span><span>0.559</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 50%; background: #6B8E9B;">0.559</div></div>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-title">✍️ Character Error Rate (CER)</div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Китайский</span><span>0.249</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 100%; background: #E63946;">0.249</div></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Русский</span><span>0.242</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 97.2%; background: #2A9D8F;">0.242</div></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-label"><span>Английский</span><span>0.085</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 34.1%; background: #457B9D;">0.085</div></div>
+                    </div>
+                    <div class="bar-container" style="margin-top: 1rem;">
+                        <div class="bar-label"><span>📊 Средний CER</span><span>0.196</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 78.7%; background: #6B8E9B;">0.196</div></div>
+                    </div>
+                </div>
+            </div>
+            <table class="metrics-table">
+                <thead>
+                    <tr><th>Язык</th><th>N (образцов)</th><th>WER</th><th>CER</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Китайский</td><td>10</td><td>1.118</td><td>0.249</td></tr>
+                    <tr><td>Английский</td><td>10</td><td>0.140</td><td>0.085</td></tr>
+                    <tr><td>Русский</td><td>10</td><td>0.378</td><td>0.242</td></tr>
+                    <tr style="background: #eaf2f5;"><td><strong>Среднее</strong></td><td><strong>30</strong></td><td><strong>0.559</strong></td><td><strong>0.196</strong></td></tr>
+                </tbody>
+            </table>
+            <div class="note">
+                📌 WER – Word Error Rate (↓ лучше, 0 = идеально). CER – Character Error Rate (↓ лучше, 0 = идеально).<br>
+                Тестирование проведено на выборке из 10 изображений на каждый язык.
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРИМЕНИМОСТЬ И ЦЕННОСТЬ -->
     <section class="slide">
         <div class="content">
             <h2>🏛️ Применимость и ценность</h2>
-            <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(230px,1fr));">
-                <div class="metric-card"><div class="metric-number">🏺</div><div class="metric-label">Архивы и музеи</div><div class="metric-desc">Оцифровка рукописей, дореволюционных документов</div></div>
-                <div class="metric-card"><div class="metric-number">🎓</div><div class="metric-label">Научные исследования</div><div class="metric-desc">Полевые заметки, исторические манускрипты</div></div>
-                <div class="metric-card"><div class="metric-number">🏛️</div><div class="metric-label">Библиотеки</div><div class="metric-desc">Старые книги, газеты на любых языках</div></div>
-                <div class="metric-card"><div class="metric-number">🌍</div><div class="metric-label">Путешествия и личное использование</div><div class="metric-desc">Вывески, рукописные записки → русский язык</div></div>
-                <div class="metric-card"><div class="metric-number">🤝</div><div class="metric-label">НКО / цифровизация</div><div class="metric-desc">Низкая стоимость, полный контроль данных</div></div>
+            <div class="applicability-grid">
+                <div class="applicability-card"><div class="metric-number">🏺</div><div class="metric-label">Архивы и музеи</div><div class="metric-desc">Оцифровка рукописей, дореволюционных документов</div></div>
+                <div class="applicability-card"><div class="metric-number">🎓</div><div class="metric-label">Научные исследования</div><div class="metric-desc">Полевые заметки, исторические манускрипты</div></div>
+                <div class="applicability-card"><div class="metric-number">🏛️</div><div class="metric-label">Библиотеки</div><div class="metric-desc">Старые книги, газеты на любых языках</div></div>
+                <div class="applicability-card"><div class="metric-number">🌍</div><div class="metric-label">Путешествия и личное использование</div><div class="metric-desc">Вывески, рукописные записки → русский язык</div></div>
+                <div class="applicability-card"><div class="metric-number">🤝</div><div class="metric-label">НКО / цифровизация</div><div class="metric-desc">Низкая стоимость, полный контроль данных</div></div>
             </div>
             <div style="background:#EAF3F0; border-radius: 28px; padding: 1rem; margin-top: 1rem;">
                 <p>✔️ <strong>Никакие данные не покидают сервер</strong> — полная приватность.<br>
@@ -500,13 +744,13 @@
         </div>
     </section>
 
+    <!-- QR-КОД -->
     <section class="slide">
         <div class="content" style="text-align: center;">
             <h2>📱 QR-код и ссылка на проект</h2>
             <div class="qr-box">
                 <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=https%3A%2F%2Fgithub.com%2FBokceris1%2FHistoScan"
-                         alt="QR код GitHub HistoScan" width="200" height="200" style="border-radius: 20px;">
+                    <img src="images/qr-code.jpg" alt="QR код GitHub HistoScan" width="200" height="200" style="border-radius: 20px;" onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fgithub.com%2FBokceris1%2FHistoScan'">
                 </div>
                 <div>
                     <p><strong>Сканируйте, чтобы перейти к репозиторию</strong></p>
@@ -521,7 +765,7 @@
         </div>
     </section>
 
-    <!-- Новый слайд: Источники информации -->
+    <!-- ИСТОЧНИКИ -->
     <section class="slide">
         <div class="content">
             <h2>📚 Источники технической информации</h2>
@@ -544,14 +788,24 @@
                         Qwen2-VL-2B-OCR — тонко настроенная версия предыдущей модели, оптимизированная для задач оптического распознавания символов. Позволяет извлекать полный текст из изображений документов, таблиц и платёжных ведомостей.
                     </div>
                 </div>
+                <div class="source-item">
+                    <div class="source-title">📄 Научная статья Qwen2-VL</div>
+                    <div class="source-link">
+                        <a href="https://arxiv.org/pdf/2409.12191" target="_blank">https://arxiv.org/pdf/2409.12191</a>
+                    </div>
+                    <div class="source-desc">
+                        Официальная статья с описанием архитектуры, обучения и результатов тестирования семейства моделей Qwen2-VL.
+                    </div>
+                </div>
             </div>
             <div style="background:#EAF3F0; border-radius: 28px; padding: 1rem; margin-top: 1rem; text-align:center;">
                 <p>💡 Эти модели были выбраны за баланс между качеством распознавания и низкими требованиями к оборудованию.<br>
-                Обе модели распространяются свободно и могут использоваться в локальных проектах без дополнительных лицензионных отчислений.</p>
+                Обе модели распространяются свободно и могут использоваться в локальных проектах.</p>
             </div>
         </div>
     </section>
 
+    <!-- ЧТО ДЕЛАЕТ UNIQUE -->
     <section class="slide">
         <div class="content">
             <h2>🚀 Что делает HistoScan уникальным</h2>
@@ -570,11 +824,10 @@
                 <div style="background:#F9FDFF; border-radius: 28px; padding: 1.4rem;">
                     <h3>🔮 Планы развития</h3>
                     <ul style="margin-left: 1rem;">
-                        <li>🖥️ Web-интерфейс + пакетная обработка</li>
-                        <li>📜 Дообучение на исторических славянских рукописях</li>
-                        <li>🧩 Извлечение таблиц (структурированный OCR)</li>
-                        <li>🐳 Docker-образ, опциональное ускорение GPU</li>
-                        <li>📎 Интеграция с ELK для архивных пайплайнов</li>
+                        <li>📱 Удобное мобильное приложение</li>
+                        <li>📜 Дообучение для рукописных славянских текстов</li>
+                        <li>📊 Извлечение таблиц (структурированный OCR)</li>
+                        <li>🔊 Добавить TTS для озвучки (опционально)</li>
                     </ul>
                 </div>
             </div>
@@ -586,20 +839,24 @@
         </div>
     </section>
 
+    <!-- ИТОГИ -->
     <section class="slide">
         <div class="content" style="text-align: center;">
             <h2>✅ Итоги</h2>
             <div style="max-width: 800px; margin: 0 auto;">
-                <p style="font-size:1.2rem;">HistoScan устраняет разрыв между историческими рукописными документами и цифровой доступностью, предоставляя точное OCR и перевод на русский язык через простой Telegram-интерфейс.</p>
+                <p style="font-size:1.2rem;">HistoScan — это лёгкое, полностью локальное решение для распознавания рукописных и печатных исторических документов. Оно работает даже на маломощных ноутбуках и не допускает утечки конфиденциальной информации в облачные сервисы — вся обработка происходит на устройстве пользователя.</p>
+                <p style="margin-top: 1rem; font-size:1rem; color:#2F6575;">🎯 Основная целевая аудитория — архивы, музеи, библиотеки и научные сотрудники, работающие с ценными рукописными материалами.</p>
                 <div class="metrics-grid" style="grid-template-columns: repeat(2,1fr); gap:1rem; margin-top: 1.5rem;">
                     <div class="metric-card"><span class="metric-number">📥</span><div>Низкие требования: 4 ГБ ОЗУ, CPU</div></div>
                     <div class="metric-card"><span class="metric-number">🌐</span><div>Мультиязычность + рукописный текст</div></div>
                 </div>
                 <hr>
                 <p style="margin-top: 1rem;">💡 <strong>Открытое развитие</strong> — приглашаем к сотрудничеству.</p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.2rem;">
+                <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.2rem; flex-wrap: wrap;">
                     <div style="background:#eef3f7; border-radius: 60px; padding: 0.5rem 1.3rem; font-weight:500;">🤖 @HistoScanBot</div>
-                    <div style="background:#eef3f7; border-radius: 60px; padding: 0.5rem 1.3rem; font-weight:500;">📘 GitHub</div>
+                    <div style="background:#eef3f7; border-radius: 60px; padding: 0.5rem 1.3rem; font-weight:500;">
+                        <a href="https://github.com/Bokceris1/HistoScan" target="_blank" style="color:#1E5A6E; text-decoration:none;">📘 Bokceris1/HistoScan</a>
+                    </div>
                 </div>
                 <footer style="margin-top: 2rem;">Защита проекта HistoScan: сохранение культурного наследия с помощью ИИ</footer>
             </div>
