@@ -553,20 +553,20 @@
 <div class="slides-container" id="slidesContainer">
     <section class="slide">
         <div class="content" style="text-align: center;">
-            <span class="badge">🏆 Выпускной проект / ИИ-решение</span>
+<!--            <span class="badge">🏆 Выпускной проект / ИИ-решение</span>-->
             <h1 style="font-size: 4rem;">HistoScan</h1>
             <div class="subhead">OCR + нейроперевод для исторических документов</div>
             <div style="margin: 2rem auto; max-width: 700px;">
-                <p style="font-size: 1.2rem; color: #2F6575;">Telegram-бот, который распознаёт рукописный и печатный текст <br> на любом языке и переводит его на русский.</p>
+                <p style="font-size: 1.2rem; color: #2F6575;">Telegram-бот, который распознаёт рукописный и печатный текст <br> и переводит его на русский.</p>
             </div>
             <div class="tech-stack" style="justify-content: center;">
                 <span class="tech-item">🐍 Python 3.10+</span>
                 <span class="tech-item">🤗 Qwen2-VL-2B-OCR</span>
                 <span class="tech-item">🌐 Qwen3.5-0.8B</span>
-                <span class="tech-item">🤖 Aiogram 3</span>
+<!--                <span class="tech-item">🤖 Aiogram 3</span>-->
                 <span class="tech-item">📄 PDF / JPG / PNG</span>
             </div>
-            <footer style="margin-top: 2.5rem;">Работает на CPU · 4 ГБ ОЗУ</footer>
+            <footer style="margin-top: 2.5rem;">Работает на CPU · 7 ГБ ОЗУ</footer>
         </div>
     </section>
 
@@ -653,9 +653,9 @@
         <div class="content">
             <h2>📊 Системные метрики</h2>
             <div class="metrics-grid">
-                <div class="metric-card"><div class="metric-number">~5–10 с</div><div class="metric-label">Среднее время инференса</div><div class="metric-desc">CPU (Intel i5 / аналоги), без GPU</div></div>
+                <div class="metric-card"><div class="metric-number">~3-5 мин</div><div class="metric-label">Среднее время инференса</div><div class="metric-desc">CPU (Intel i5 / аналоги), без GPU</div></div>
                 <div class="metric-card"><div class="metric-number">100+</div><div class="metric-label">Языки OCR</div><div class="metric-desc">Мультиязычная модель Qwen2-VL</div></div>
-                <div class="metric-card"><div class="metric-number">~3 ГБ</div><div class="metric-label">Веса моделей</div><div class="metric-desc">OCR + переводчик</div></div>
+                <div class="metric-card"><div class="metric-number">~7 ГБ</div><div class="metric-label">Веса моделей</div><div class="metric-desc">OCR + переводчик</div></div>
                 <div class="metric-card"><div class="metric-number">4-6 ГБ</div><div class="metric-label">Пиковое потребление ОЗУ</div><div class="metric-desc">Оптимизировано для CPU</div></div>
                 <div class="metric-card"><div class="metric-number">📑 PDF</div><div class="metric-label">Многостраничные файлы</div><div class="metric-desc">Постраничная обработка + перевод</div></div>
             </div>
@@ -765,7 +765,7 @@
         </div>
     </section>
 
-    <!-- ИСТОЧНИКИ -->
+    <!-- ИСТОЧНИКИ (ДОБАВЛЕНА НОВАЯ ССЫЛКА) -->
     <section class="slide">
         <div class="content">
             <h2>📚 Источники технической информации</h2>
@@ -797,6 +797,15 @@
                         Официальная статья с описанием архитектуры, обучения и результатов тестирования семейства моделей Qwen2-VL.
                     </div>
                 </div>
+                <div class="source-item">
+                    <div class="source-title">📄 Обзор методов распознавания рукописного текста</div>
+                    <div class="source-link">
+                        <a href="https://cs231n.stanford.edu/reports/2017/pdfs/810.pdf" target="_blank">https://cs231n.stanford.edu/reports/2017/pdfs/810.pdf</a>
+                    </div>
+                    <div class="source-desc">
+                        Stanford CS231N: Распознавание рукописного текста с помощью глубокого обучения (Balci, Saadati, Shiferaw, 2017). Обзор подходов — от классификации целых слов до сегментации символов с LSTM и CNN.
+                    </div>
+                </div>
             </div>
             <div style="background:#EAF3F0; border-radius: 28px; padding: 1rem; margin-top: 1rem; text-align:center;">
                 <p>💡 Эти модели были выбраны за баланс между качеством распознавания и низкими требованиями к оборудованию.<br>
@@ -818,7 +827,7 @@
                         <li>✅ Поддержка многостраничных PDF</li>
                         <li>✅ Лёгкий переводчик 0.8B параметров</li>
                         <li>✅ Автоопределение русского языка: перевод не дублируется</li>
-                        <li>✅ Работает на слабом железе (4ГБ ОЗУ, CPU)</li>
+                        <li>✅ Работает на слабом железе (7ГБ ОЗУ, CPU)</li>
                     </ul>
                 </div>
                 <div style="background:#F9FDFF; border-radius: 28px; padding: 1.4rem;">
@@ -847,7 +856,7 @@
                 <p style="font-size:1.2rem;">HistoScan — это лёгкое, полностью локальное решение для распознавания рукописных и печатных исторических документов. Оно работает даже на маломощных ноутбуках и не допускает утечки конфиденциальной информации в облачные сервисы — вся обработка происходит на устройстве пользователя.</p>
                 <p style="margin-top: 1rem; font-size:1rem; color:#2F6575;">🎯 Основная целевая аудитория — архивы, музеи, библиотеки и научные сотрудники, работающие с ценными рукописными материалами.</p>
                 <div class="metrics-grid" style="grid-template-columns: repeat(2,1fr); gap:1rem; margin-top: 1.5rem;">
-                    <div class="metric-card"><span class="metric-number">📥</span><div>Низкие требования: 4 ГБ ОЗУ, CPU</div></div>
+                    <div class="metric-card"><span class="metric-number">📥</span><div>Низкие требования: 7 ГБ ОЗУ, CPU</div></div>
                     <div class="metric-card"><span class="metric-number">🌐</span><div>Мультиязычность + рукописный текст</div></div>
                 </div>
                 <hr>
